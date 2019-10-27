@@ -16,28 +16,21 @@ class ActivityTest < Minitest::Test
   end
 
   def test_it_initializes_with_name_and_participants
-    expected = {}
     assert_equal "Brunch", @brunch.name
-    assert_equal expected, @brunch.participants
+    assert_equal ({}), @brunch.participants
   end
 
   def test_it_can_add_participants
-    skip
-
-    expected_first = {}
-    assert_equal expected_first, @brunch.participants
+    assert_equal ({}), @brunch.participants
     @brunch.add_participant("Maria", 20)
-    expected_next = {"Maria" => 20}
-    assert_equal expected_next, @brunch.participants
+    assert_equal ({"Maria" => 20}), @brunch.participants
     @brunch.add_participant("Luther", 40)
-    expected_last = {"Maria" => 20, "Luther" => 40}
-    assert_equal expected_last, @brunch.participants
+    assert_equal ({"Maria" => 20, "Luther" => 40}), @brunch.participants
   end
 
   def test_it_can_calculate_total_cost
-    skip
-
+    @brunch.add_participant("Maria", 20)
+    @brunch.add_participant("Luther", 40)
     assert_equal 60, @brunch.total_cost
   end
-
 end
