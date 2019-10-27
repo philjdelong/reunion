@@ -1,14 +1,11 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/activity'
-require './lib/participant'
 
 class ActivityTest < Minitest::Test
 
   def setup
     @brunch = Activity.new("Brunch")
-    @maria = Participant.new("Maria")
-    @luther = Participant.new("Luther")
   end
 
   def test_it_exists
@@ -32,5 +29,18 @@ class ActivityTest < Minitest::Test
     @brunch.add_participant("Maria", 20)
     @brunch.add_participant("Luther", 40)
     assert_equal 60, @brunch.total_cost
+  end
+
+  def test_it_can_split_the_cost
+    @brunch.add_participant("Maria", 20)
+    @brunch.add_participant("Luther", 40)
+    assert_equal 30, @brunch.split
+  end
+
+  def test_it_can_tell_amount_owed
+    # skip
+    @brunch.add_participant("Maria", 20)
+    @brunch.add_participant("Luther", 40)
+    assert_equal ({"Maria" => 10, "Luther" => -10}), @brunch.owed
   end
 end

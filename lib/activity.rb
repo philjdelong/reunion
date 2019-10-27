@@ -3,18 +3,24 @@ class Activity
 
   def initialize(name)
     @name = name
-    @participants = {
-
-    }
+    @participants = {}
   end
 
-  def add_participant(participant_name, cost)
+  def add_participant(participant_name, bill)
     @participants.merge! ({
-      participant_name => cost
+      participant_name => bill
     })
   end
 
   def total_cost
     @participants.values.sum
+  end
+
+  def split
+    total_cost/@participants.length
+  end
+
+  def owed
+
   end
 end
