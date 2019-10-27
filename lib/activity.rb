@@ -21,6 +21,10 @@ class Activity
   end
 
   def owed
-
+    amt_owed = {}
+    @participants.map do |key, participant|
+      amt_owed[key] = split - participant
+    end
+    amt_owed
   end
 end
