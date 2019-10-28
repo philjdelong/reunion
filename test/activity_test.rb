@@ -38,7 +38,6 @@ class ActivityTest < Minitest::Test
   end
 
   def test_it_can_tell_amount_owed
-    # skip
     @brunch.add_participant("Maria", 20)
     @brunch.add_participant("Luther", 40)
     assert_equal ({"Maria" => 10, "Luther" => -10}), @brunch.owed
