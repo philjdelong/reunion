@@ -21,8 +21,7 @@ class Activity
   end
 
   def owed
-    amt_owed = {}
-    @participants.map do |participant, bill|
+    amt_owed = @participants.reduce({}) do |participant, bill|
       amt_owed[participant] = split - bill
     end
     amt_owed
